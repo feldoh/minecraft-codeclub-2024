@@ -31,15 +31,14 @@ public class DextermodModTabs {
 	@SubscribeEvent
 	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
 		if (tabData.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-
 			tabData.accept(DextermodModBlocks.DEXTER_FACE_BLOCK.get().asItem());
 			tabData.accept(DextermodModBlocks.DEXTER_HOUSEBLOCK.get().asItem());
-
 		} else if (tabData.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-
 			tabData.accept(DextermodModItems.PLATFORM_WAND.get());
 			tabData.accept(DextermodModItems.DEXMENSION.get());
-
+			tabData.accept(DextermodModItems.DEX_ROTATION_WAND.get());
+		} else if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+			tabData.accept(DextermodModItems.DEX_CHAIR_SPAWN_EGG.get());
 		}
 	}
 }

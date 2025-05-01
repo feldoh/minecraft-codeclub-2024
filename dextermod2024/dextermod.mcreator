@@ -145,12 +145,12 @@
       "registry_name": "dexter_funace_block",
       "metadata": {
         "files": [
+          "src/main/resources/data/dextermod/loot_table/blocks/dexter_funace_block.json",
+          "src/main/java/net/mcreator/dextermod/block/entity/DexterFunaceBlockBlockEntity.java",
+          "src/main/resources/assets/dextermod/blockstates/dexter_funace_block.json",
           "src/main/resources/assets/dextermod/models/item/dexter_funace_block.json",
           "src/main/resources/assets/dextermod/models/block/dexter_funace_block.json",
-          "src/main/resources/assets/dextermod/blockstates/dexter_funace_block.json",
-          "src/main/resources/data/dextermod/loot_table/blocks/dexter_funace_block.json",
-          "src/main/java/net/mcreator/dextermod/block/DexterFunaceBlockBlock.java",
-          "src/main/java/net/mcreator/dextermod/block/entity/DexterFunaceBlockBlockEntity.java"
+          "src/main/java/net/mcreator/dextermod/block/DexterFunaceBlockBlock.java"
         ]
       }
     },
@@ -162,8 +162,8 @@
       "registry_name": "dexter_furnace_gui",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/dextermod/world/inventory/DexterFurnaceGUIMenu.java",
-          "src/main/java/net/mcreator/dextermod/client/gui/DexterFurnaceGUIScreen.java"
+          "src/main/java/net/mcreator/dextermod/client/gui/DexterFurnaceGUIScreen.java",
+          "src/main/java/net/mcreator/dextermod/world/inventory/DexterFurnaceGUIMenu.java"
         ]
       }
     },
@@ -309,17 +309,17 @@
       "registry_name": "dexmension",
       "metadata": {
         "files": [
-          "src/main/resources/data/dextermod/dimension_type/dexmension.json",
-          "src/main/java/net/mcreator/dextermod/world/teleporter/DexmensionTeleporter.java",
-          "src/main/java/net/mcreator/dextermod/item/DexmensionItem.java",
-          "src/main/resources/assets/dextermod/models/block/dexmension_portal_ns.json",
           "src/main/java/net/mcreator/dextermod/block/DexmensionPortalBlock.java",
-          "src/main/resources/assets/dextermod/models/block/dexmension_portal_ew.json",
           "src/main/resources/data/dextermod/dimension/dexmension.json",
-          "src/main/resources/assets/dextermod/models/item/dexmension.json",
-          "src/main/resources/assets/dextermod/blockstates/dexmension_portal.json",
+          "src/main/resources/assets/dextermod/models/block/dexmension_portal_ns.json",
           "src/main/java/net/mcreator/dextermod/world/dimension/DexmensionDimension.java",
-          "src/main/java/net/mcreator/dextermod/world/teleporter/DexmensionPortalShape.java"
+          "src/main/resources/assets/dextermod/models/item/dexmension.json",
+          "src/main/resources/assets/dextermod/models/block/dexmension_portal_ew.json",
+          "src/main/java/net/mcreator/dextermod/world/teleporter/DexmensionTeleporter.java",
+          "src/main/java/net/mcreator/dextermod/world/teleporter/DexmensionPortalShape.java",
+          "src/main/resources/assets/dextermod/blockstates/dexmension_portal.json",
+          "src/main/java/net/mcreator/dextermod/item/DexmensionItem.java",
+          "src/main/resources/data/dextermod/dimension_type/dexmension.json"
         ]
       }
     },
@@ -363,8 +363,8 @@
         "files": [
           "src/main/resources/assets/dextermod/models/block/dexter_houseblock.json",
           "src/main/resources/data/dextermod/loot_table/blocks/dexter_houseblock.json",
-          "src/main/java/net/mcreator/dextermod/block/DexterHouseblockBlock.java",
           "src/main/resources/assets/dextermod/models/item/dexter_houseblock.json",
+          "src/main/java/net/mcreator/dextermod/block/DexterHouseblockBlock.java",
           "src/main/resources/assets/dextermod/blockstates/dexter_houseblock.json"
         ]
       }
@@ -409,18 +409,84 @@
         "files": [
           "src/main/resources/assets/dextermod/blockstates/robhouseblock.json",
           "src/main/resources/data/dextermod/loot_table/blocks/robhouseblock.json",
+          "src/main/resources/assets/dextermod/models/item/robhouseblock.json",
           "src/main/java/net/mcreator/dextermod/block/RobhouseblockBlock.java",
-          "src/main/resources/assets/dextermod/models/block/robhouseblock.json",
-          "src/main/resources/assets/dextermod/models/item/robhouseblock.json"
+          "src/main/resources/assets/dextermod/models/block/robhouseblock.json"
         ]
       }
+    },
+    {
+      "name": "DexChair",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dex_chair",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/entity/DexChairEntity.java",
+          "src/main/resources/assets/dextermod/models/item/dex_chair_spawn_egg.json",
+          "src/main/java/net/mcreator/dextermod/client/renderer/DexChairRenderer.java"
+        ]
+      },
+      "path": "~/chair"
+    },
+    {
+      "name": "DexChairOnInitialEntitySpawn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dex_chair_on_initial_entity_spawn",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/procedures/DexChairOnInitialEntitySpawnProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/chair"
+    },
+    {
+      "name": "DexRotationWandLivingEntityIsHitWithItem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dex_rotation_wand_living_entity_is_hit_with_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/procedures/DexRotationWandLivingEntityIsHitWithItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/chair"
+    },
+    {
+      "name": "DexRotationWand",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dex_rotation_wand",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/item/DexRotationWandItem.java",
+          "src/main/resources/assets/dextermod/models/item/dex_rotation_wand.json"
+        ]
+      },
+      "path": "~/chair"
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "tag_elements": {
     "BLOCKS:minecraft:overworld_carver_replaceables": [
-      "~Blocks.EMERALD_BLOCK",
       "~CUSTOM:DexterFaceBlock"
     ]
   },
@@ -431,15 +497,23 @@
       "item_group.dextermod.dextertab": "Dextertab",
       "item.dextermod.platform_wand": "Platform Wand",
       "gui.dextermod.dexter_furnace_gui.label_bob_the_builder": "Bob The Builder",
+      "entity.dextermod.dex_chair": "Dex Chair",
       "item.dextermod.dexmension": "Dexmension Portal Igniter",
       "block.dextermod.dexter_houseblock": "Dexter Houseblock",
       "block.dextermod.dexter_face_block": "Dexter Face Block",
-      "block.dextermod.dexter_funace_block": "Dexter Funace Block"
+      "block.dextermod.dexter_funace_block": "Dexter Funace Block",
+      "item.dextermod.dex_rotation_wand": "Dex Rotation Wand",
+      "item.dextermod.dex_chair_spawn_egg": "Dex Chair Spawn Egg"
     }
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "chair",
+        "children": []
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "dextermod",
@@ -456,5 +530,5 @@
     "currentGenerator": "neoforge-1.21.1",
     "modElementsPackage": "net.mcreator.dextermod"
   },
-  "mcreatorVersion": 202400342716
+  "mcreatorVersion": 202500110519
 }

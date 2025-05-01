@@ -83,10 +83,20 @@ public class DexterFurnaceGUIMenu extends AbstractContainerMenu implements Suppl
 			}
 		}
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 30, 25) {
+			private final int slot = 0;
+			private int x = DexterFurnaceGUIMenu.this.x;
+			private int y = DexterFurnaceGUIMenu.this.y;
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 30, 57) {
+			private final int slot = 1;
+			private int x = DexterFurnaceGUIMenu.this.x;
+			private int y = DexterFurnaceGUIMenu.this.y;
 		}));
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 127, 42) {
+			private final int slot = 2;
+			private int x = DexterFurnaceGUIMenu.this.x;
+			private int y = DexterFurnaceGUIMenu.this.y;
+
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;

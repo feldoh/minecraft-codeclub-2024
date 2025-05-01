@@ -73,24 +73,8 @@ public class DexterHouseblockOnBlockRightClickedProcedure {
 			if (_bs.getBlock().getStateDefinition().getProperty("hanging") instanceof BooleanProperty _booleanProp)
 				world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 		}
-		world.setBlock(BlockPos.containing(x + 3, y + 1, z + 2), (new Object() {
-			public BlockState with(BlockState _bs, Direction newValue) {
-				Property<?> _prop = _bs.getBlock().getStateDefinition().getProperty("facing");
-				if (_prop instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(newValue))
-					return _bs.setValue(_dp, newValue);
-				_prop = _bs.getBlock().getStateDefinition().getProperty("axis");
-				return _prop instanceof EnumProperty _ep && _ep.getPossibleValues().contains(newValue.getAxis()) ? _bs.setValue(_ep, newValue.getAxis()) : _bs;
-			}
-		}.with(Blocks.WALL_TORCH.defaultBlockState(), Direction.EAST)), 3);
-		world.setBlock(BlockPos.containing(x + 3, y - 1, z + 1), (new Object() {
-			public BlockState with(BlockState _bs, Direction newValue) {
-				Property<?> _prop = _bs.getBlock().getStateDefinition().getProperty("facing");
-				if (_prop instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(newValue))
-					return _bs.setValue(_dp, newValue);
-				_prop = _bs.getBlock().getStateDefinition().getProperty("axis");
-				return _prop instanceof EnumProperty _ep && _ep.getPossibleValues().contains(newValue.getAxis()) ? _bs.setValue(_ep, newValue.getAxis()) : _bs;
-			}
-		}.with(Blocks.PURPUR_STAIRS.defaultBlockState(), Direction.WEST)), 3);
+		world.setBlock(BlockPos.containing(x + 3, y + 1, z + 2), (blockStateWithDirection(Blocks.WALL_TORCH.defaultBlockState(), Direction.EAST)), 3);
+		world.setBlock(BlockPos.containing(x + 3, y - 1, z + 1), (blockStateWithDirection(Blocks.PURPUR_STAIRS.defaultBlockState(), Direction.WEST)), 3);
 		{
 			BlockPos _bp = BlockPos.containing(x + 1, y + 0, z - 1);
 			BlockState _bs = Blocks.CRAFTING_TABLE.defaultBlockState();
@@ -214,5 +198,13 @@ public class DexterHouseblockOnBlockRightClickedProcedure {
 				}
 			}
 		}
+	}
+
+	private static BlockState blockStateWithDirection(BlockState blockState, Direction newValue) {
+		Property<?> prop = blockState.getBlock().getStateDefinition().getProperty("facing");
+		if (prop instanceof DirectionProperty dp && dp.getPossibleValues().contains(newValue))
+			return blockState.setValue(dp, newValue);
+		prop = blockState.getBlock().getStateDefinition().getProperty("axis");
+		return prop instanceof EnumProperty ep && ep.getPossibleValues().contains(newValue.getAxis()) ? blockState.setValue(ep, newValue.getAxis()) : blockState;
 	}
 }

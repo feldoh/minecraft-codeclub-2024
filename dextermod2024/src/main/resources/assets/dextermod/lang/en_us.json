@@ -3,8 +3,11 @@
   "item_group.dextermod.dextertab": "Dextertab",
   "item.dextermod.platform_wand": "Platform Wand",
   "gui.dextermod.dexter_furnace_gui.label_bob_the_builder": "Bob The Builder",
+  "entity.dextermod.dex_chair": "Dex Chair",
   "item.dextermod.dexmension": "Dexmension Portal Igniter",
   "block.dextermod.dexter_houseblock": "Dexter Houseblock",
   "block.dextermod.dexter_face_block": "Dexter Face Block",
-  "block.dextermod.dexter_funace_block": "Dexter Funace Block"
+  "block.dextermod.dexter_funace_block": "Dexter Funace Block",
+  "item.dextermod.dex_rotation_wand": "Dex Rotation Wand",
+  "item.dextermod.dex_chair_spawn_egg": "Dex Chair Spawn Egg"
 }

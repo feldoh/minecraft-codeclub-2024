@@ -21,6 +21,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.mcreator.dextermod.init.DextermodModTabs;
 import net.mcreator.dextermod.init.DextermodModMenus;
 import net.mcreator.dextermod.init.DextermodModItems;
+import net.mcreator.dextermod.init.DextermodModEntities;
 import net.mcreator.dextermod.init.DextermodModBlocks;
 import net.mcreator.dextermod.init.DextermodModBlockEntities;
 
@@ -45,7 +46,7 @@ public class DextermodMod {
 		DextermodModBlocks.REGISTRY.register(modEventBus);
 		DextermodModBlockEntities.REGISTRY.register(modEventBus);
 		DextermodModItems.REGISTRY.register(modEventBus);
-
+		DextermodModEntities.REGISTRY.register(modEventBus);
 		DextermodModTabs.REGISTRY.register(modEventBus);
 
 		DextermodModMenus.REGISTRY.register(modEventBus);

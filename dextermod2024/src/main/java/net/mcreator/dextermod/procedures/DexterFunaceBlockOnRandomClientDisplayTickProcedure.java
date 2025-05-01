@@ -16,77 +16,15 @@ import net.minecraft.core.BlockPos;
 public class DexterFunaceBlockOnRandomClientDisplayTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		double flameSize = 0;
-		if (new Object() {
-			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
-				BlockEntity blockEntity = world.getBlockEntity(pos);
-				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
-				return -1;
-			}
-		}.getValue(world, BlockPos.containing(x, y, z), "fuel") > 0) {
-			flameSize = ((new Object() {
-				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
-					BlockEntity blockEntity = world.getBlockEntity(pos);
-					if (blockEntity != null)
-						return blockEntity.getPersistentData().getDouble(tag);
-					return -1;
-				}
-			}.getValue(world, BlockPos.containing(x, y, z), "fuel")) / 1000) * 0.0625;
-			if ((new Object() {
-				public Direction getDirection(BlockPos pos) {
-					BlockState _bs = world.getBlockState(pos);
-					Property<?> property = _bs.getBlock().getStateDefinition().getProperty("facing");
-					if (property != null && _bs.getValue(property) instanceof Direction _dir)
-						return _dir;
-					else if (_bs.hasProperty(BlockStateProperties.AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
-					else if (_bs.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
-					return Direction.NORTH;
-				}
-			}.getDirection(BlockPos.containing(x, y, z))) == Direction.NORTH) {
+		if (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "fuel") > 0) {
+			flameSize = (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "fuel") / 1000) * 0.0625;
+			if ((getBlockDirection(world, BlockPos.containing(x, y, z))) == Direction.NORTH) {
 				world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.6), (z + 0.1), 0, flameSize, 0);
-			} else if ((new Object() {
-				public Direction getDirection(BlockPos pos) {
-					BlockState _bs = world.getBlockState(pos);
-					Property<?> property = _bs.getBlock().getStateDefinition().getProperty("facing");
-					if (property != null && _bs.getValue(property) instanceof Direction _dir)
-						return _dir;
-					else if (_bs.hasProperty(BlockStateProperties.AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
-					else if (_bs.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
-					return Direction.NORTH;
-				}
-			}.getDirection(BlockPos.containing(x, y, z))) == Direction.SOUTH) {
+			} else if ((getBlockDirection(world, BlockPos.containing(x, y, z))) == Direction.SOUTH) {
 				world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.6), (z + 1.1), 0, flameSize, 0);
-			} else if ((new Object() {
-				public Direction getDirection(BlockPos pos) {
-					BlockState _bs = world.getBlockState(pos);
-					Property<?> property = _bs.getBlock().getStateDefinition().getProperty("facing");
-					if (property != null && _bs.getValue(property) instanceof Direction _dir)
-						return _dir;
-					else if (_bs.hasProperty(BlockStateProperties.AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
-					else if (_bs.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
-					return Direction.NORTH;
-				}
-			}.getDirection(BlockPos.containing(x, y, z))) == Direction.EAST) {
+			} else if ((getBlockDirection(world, BlockPos.containing(x, y, z))) == Direction.EAST) {
 				world.addParticle(ParticleTypes.FLAME, (x + 1.1), (y + 0.6), (z + 0.5), 0, flameSize, 0);
-			} else if ((new Object() {
-				public Direction getDirection(BlockPos pos) {
-					BlockState _bs = world.getBlockState(pos);
-					Property<?> property = _bs.getBlock().getStateDefinition().getProperty("facing");
-					if (property != null && _bs.getValue(property) instanceof Direction _dir)
-						return _dir;
-					else if (_bs.hasProperty(BlockStateProperties.AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
-					else if (_bs.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-						return Direction.fromAxisAndDirection(_bs.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
-					return Direction.NORTH;
-				}
-			}.getDirection(BlockPos.containing(x, y, z))) == Direction.WEST) {
+			} else if ((getBlockDirection(world, BlockPos.containing(x, y, z))) == Direction.WEST) {
 				world.addParticle(ParticleTypes.FLAME, (x + 0.1), (y + 0.6), (z + 0.5), 0, flameSize, 0);
 			}
 			if (world instanceof Level _level) {
@@ -97,5 +35,24 @@ public class DexterFunaceBlockOnRandomClientDisplayTickProcedure {
 				}
 			}
 		}
+	}
+
+	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		if (blockEntity != null)
+			return blockEntity.getPersistentData().getDouble(tag);
+		return -1;
+	}
+
+	private static Direction getBlockDirection(LevelAccessor world, BlockPos pos) {
+		BlockState blockState = world.getBlockState(pos);
+		Property<?> property = blockState.getBlock().getStateDefinition().getProperty("facing");
+		if (property != null && blockState.getValue(property) instanceof Direction direction)
+			return direction;
+		else if (blockState.hasProperty(BlockStateProperties.AXIS))
+			return Direction.fromAxisAndDirection(blockState.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
+		else if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
+			return Direction.fromAxisAndDirection(blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
+		return Direction.NORTH;
 	}
 }
