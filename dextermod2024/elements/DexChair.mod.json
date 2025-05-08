@@ -120,6 +120,9 @@
       "value": ""
     },
     "entityDataEntries": [],
+    "onMobTickUpdate": {
+      "name": "DexChairOnEntityTickUpdate"
+    },
     "onInitialSpawn": {
       "name": "DexChairOnInitialEntitySpawn"
     },

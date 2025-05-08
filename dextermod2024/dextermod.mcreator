@@ -444,6 +444,22 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -478,6 +494,53 @@
         "files": [
           "src/main/java/net/mcreator/dextermod/item/DexRotationWandItem.java",
           "src/main/resources/assets/dextermod/models/item/dex_rotation_wand.json"
+        ]
+      },
+      "path": "~/chair"
+    },
+    {
+      "name": "Test",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/Test.java"
+        ]
+      }
+    },
+    {
+      "name": "DexChairOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dex_chair_on_entity_tick_update",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/dextermod/procedures/DexChairOnEntityTickUpdateProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
         ]
       },
       "path": "~/chair"

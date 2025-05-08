@@ -27,6 +27,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.dextermod.procedures.DexChairOnInitialEntitySpawnProcedure;
+import net.mcreator.dextermod.procedures.DexChairOnEntityTickUpdateProcedure;
 import net.mcreator.dextermod.init.DextermodModItems;
 
 import javax.annotation.Nullable;
@@ -67,7 +68,7 @@ public class DexChairEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata);
-		DexChairOnInitialEntitySpawnProcedure.execute(this);
+		DexChairOnInitialEntitySpawnProcedure.execute(world, this.getX(), this.getY(), this.getZ(), this);
 		return retval;
 	}
 
@@ -78,6 +79,12 @@ public class DexChairEntity extends PathfinderMob {
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
 		return retval;
+	}
+
+	@Override
+	public void baseTick() {
+		super.baseTick();
+		DexChairOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	public static void init(RegisterSpawnPlacementsEvent event) {
